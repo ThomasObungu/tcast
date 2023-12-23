@@ -34,12 +34,24 @@ class map2D:
         # Return array
         return array
     
-    def draw_map(self,array,surface):
+    def draw_map(self,array,game_surface):
+        # Draw background to overule any printing
+        pygame.draw.rect(game_surface,(0,0,0),(0,0,SCREEN_WIDTH,SCREEN_HEIGHT))
         # Iterate through rows
         for row in range(len(array)):
             # Iterate through columns
             for column in range(len(array[row])):
-                # Draw each square with coords based on array position
-                pygame.draw.rect(surface, (220,220,220) if array[row][column] == 1 else (50,50,50), 
+                # Draw each square with coords based on array position/ Col is x coords, row is y coords
+                pygame.draw.rect(game_surface, (220,220,220) if array[row][column] == 1 else (50,50,50), 
                                  (column * TILE_SIZE_X, row * TILE_SIZE_Y,
                                   TILE_SIZE_X-1,TILE_SIZE_Y-1))
+    
+    def find_empty_space(self, array):
+        # Iterate through the rows
+        for row in range(len(array)):
+            # Iterate through the rows
+            for col in range(len(array[row])):
+                # Once found a 0 which is an empty space, loop breaks and returns indexes
+                if array[row][col] == 0:
+                    return[row,col]
+                
