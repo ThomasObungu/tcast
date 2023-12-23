@@ -9,6 +9,7 @@ PLAYER_FOV = math.pi/3
 RAYS_CASTED = 144
 RAY_DEPTH = MAP_SIZE * TILE_SIZE_X
 MAP_SCALE = SCREEN_WIDTH / RAYS_CASTED
+CHANGE = True
         
 class player():
     def __init__(self, plr_x : float, plr_y : float, plr_angle : float):
