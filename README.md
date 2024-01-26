@@ -1,6 +1,6 @@
 
 # tcast
-raycasting project
+Raycasting project implimented with pygame
 # Example 3D
 https://github.com/ThomasObungu/tcast/assets/108408219/3a9ef532-64bc-4155-b7d1-0cc987a82e4c
 # Example 2D
