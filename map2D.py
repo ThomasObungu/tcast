@@ -24,13 +24,26 @@ class map2D:
         # Loop through each array and randomly fill tiles with 1's or 0's
             array[i]=[random.randint(0,1)
                                     for j in range(0,len(array[i]))]
+            
+        # Remove and horizontally or adjacent walls to prevent being trapped (Doesn't work too well)
+            if array[i+1]== 1: array[i+1] = 0
+            if array[i-1]== 1: array[i-1] = 0
+        
+                
         # Set first and last arrays to be filled with 1's only to create map boundaries
         array[0] = [1 for i in range(self.map_width)]
         array[-1] = [1 for i in range(self.map_width)]
         # Set first and last element of arrays in array to 1 to make side walls
+    
         for i in range(self.map_width):
             array[i][0] = 1
-            array[i][-1] = 1 
+            array[i][-1] = 1
+    
+        start_select = random.randint(0,MAP_SIZE-1)
+        array[start_select][0] = 0
+        if array[start_select][1]== 1 : array[start_select][1] = 0
+        start_select = random.randint(0,MAP_SIZE-1)
+        array[start_select][-1] = 0
         # Return array
         return array
     
@@ -52,6 +65,6 @@ class map2D:
             # Iterate through the rows
             for col in range(len(array[row])):
                 # Once found a 0 which is an empty space, loop breaks and returns indexes
-                if array[row][col] == 0:
+                if array[row][0] == 0:
                     return[row,col]
                 

@@ -6,7 +6,7 @@ from map2D import *
 from player import *
 
 PLAYER_FOV = math.pi/3
-RAYS_CASTED = 144
+RAYS_CASTED = 30
 RAY_DEPTH = MAP_SIZE * TILE_SIZE_X
 MAP_SCALE = SCREEN_WIDTH / RAYS_CASTED
 CHANGE = True
@@ -33,7 +33,7 @@ def main():
     plr_y = game_map_2D.find_empty_space(map_array_2D)[0] * TILE_SIZE_Y + TILE_SIZE_Y / 2
 
     # Initiate player angle 
-    plr_angle = math.pi/2
+    plr_angle = math.pi
 
     # Initiate player on 2D map
     game_player = player(plr_x,plr_y,plr_angle)
@@ -47,11 +47,12 @@ def main():
             game_player.draw_player(screen)
         # Handle user input
         game_player.user_input()
-        # Draw 3D background
+        # Draw 3D background # Comment this code below to enable 2D map
         pygame.draw.rect(screen, (50,50,50), (0,SCREEN_HEIGHT/2, 
                                 SCREEN_WIDTH, SCREEN_HEIGHT/2))
         pygame.draw.rect(screen, (255,255,255), (0,0, 
                                 SCREEN_WIDTH, SCREEN_HEIGHT/2))
+        # Comment this code above to enable 2D map along with the other code to be comment
         # Cast rays
         game_player.cast_rays(screen,map_array_2D)
 
@@ -70,6 +71,3 @@ def main():
         
 if __name__ == "__main__":
     main()
-
-
-
