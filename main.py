@@ -26,7 +26,7 @@ def main():
     screen = pygame.display.set_mode((720,480))
 
     # Show map on screen
-    show_map_2D = True
+    show_map_2D = False
 
     # Initiate starting player coordinates
     plr_x = game_map_2D.find_empty_space(map_array_2D)[1] * TILE_SIZE_X + TILE_SIZE_X / 2
